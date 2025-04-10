@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const compression = require('compression');
 // const helmet = require('helmet');
 
 const mongoSanitize = require('express-mongo-sanitize');
@@ -59,6 +60,8 @@ app.use(
     whitelist: ['ratingsAverage', 'ratingsQualtity', 'duration', 'maxGroupSize', 'difficulty', 'price'],
   }),
 );
+
+app.use(compression());
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();

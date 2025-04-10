@@ -35,9 +35,6 @@ export const updateSetting = async (data, type) => {
   try {
     const url = `/api/v1/users/${type === 'password' ? 'updatePassword' : 'updateMe'}`;
 
-    console.log(url);
-    console.log(data);
-
     //   send request to server
     const res = await axios({
       method: 'PATCH',
