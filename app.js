@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const compression = require('compression');
+const cors = require('cors');
 // const helmet = require('helmet');
 
 const mongoSanitize = require('express-mongo-sanitize');
@@ -25,6 +26,10 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBLE Middleware
+
+app.use(cors());
+app.options('*', cors());
+
 // serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
